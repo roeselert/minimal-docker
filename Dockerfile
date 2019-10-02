@@ -3,12 +3,14 @@ FROM python:3.6-slim
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
 
-RUN pip install --no-cache -r requirements.txt
-
 RUN apt-get update \
- && apt-get install -y --no-install-recommends git \
+ && apt-get install -y --no-install-recommends git wget \
  && apt-get purge -y --auto-remove \
  && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://raw.githubusercontent.com/roeselert/minimal-docker/master/requirements.txt
+
+RUN pip install --no-cache -r requirements.txt
 
 # create user with a home directory
 ARG NB_USER
