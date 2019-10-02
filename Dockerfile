@@ -1,7 +1,14 @@
-FROM python:3.7-slim
+FROM python:3.6-slim
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
+
+RUN pip install --no-cache -r requirements.txt
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git \
+ && apt-get purge -y --auto-remove \
+ && rm -rf /var/lib/apt/lists/*
 
 # create user with a home directory
 ARG NB_USER
