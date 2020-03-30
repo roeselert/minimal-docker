@@ -12,6 +12,8 @@ RUN wget https://raw.githubusercontent.com/roeselert/minimal-docker/master/requi
 
 RUN pip install --no-cache -r requirements.txt
 
+RUN git clone https://github.com/ageron/handson-ml
+
 # create user with a home directory
 ARG NB_USER
 ARG NB_UID
