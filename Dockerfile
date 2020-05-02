@@ -26,3 +26,6 @@ WORKDIR ${HOME}
 USER ${USER}
 
 RUN git clone https://github.com/ageron/handson-ml
+
+RUN git clone https://github.com/roeselert/achim
+
